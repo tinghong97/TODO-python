@@ -1,1 +1,1 @@
-curl -X POST -H "Content-Type: application/json" -d '{"task": "Buy groceries"}' http://localhost:5000/add
+curl -X POST -H "Content-Type: application/json" -d "{\"task\": \"Add TODO\"}" http://localhost:5000/add
