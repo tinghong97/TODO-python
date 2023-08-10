@@ -27,8 +27,11 @@
   
 - Build and run the docker container using docker compose up command
 
+-Publish to Docker Hub (username: tzh1997)
+
 
 3.Interface Documentation
+
 - DB schema design at the main branch
 
 
