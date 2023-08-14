@@ -8,7 +8,7 @@ def client():
         yield client
 
 def test_add_todo_item(client):
-    response = client.post('/add', json={'task': 'Buy groceries'})
+    response = client.post('/add', json={'task': 'Add TODO'})
     assert response.status_code == 201
 
 def test_list_todo_items(client):
