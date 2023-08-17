@@ -1,25 +1,31 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template,redirect,url_for,flash
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/db.sqlite'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize an empty list to store TODO items
-todo_list = []
+db = SQLAlchemy(app)
 
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(1000), nullable=False)
+    complete = db.Column(db.Boolean) 
+    user_id = db.Column(db.Integer)
+    
 # Routes
-@app.route('/add', methods=['POST'])
-def add_todo():
-    data = request.get_json()
-    task = data.get('task')
-    if task:
-        todo_item = {
-            'id': len(todo_list) + 1,
-            'task': task,
-            'completed': False
-        }
-        todo_list.append(todo_item)
-        return jsonify({'message': 'TODO item added successfully'}), 201
-    return jsonify({'error': 'Task is required'}), 400
+@app.route('/')
+def index():
+
+    todoList = Todo.query.all()
+    return render_template('base.html', todo_list=todoList)
+
+# add a task
+@app.route('/add', methods=["POST"])
+def add():
+    
+
 
 @app.route('/delete/<int:todo_id>', methods=['DELETE'])
 def delete_todo(todo_id):
