@@ -1,11 +1,11 @@
 #Add All TODO item
-curl -X POST -H "Content-Type: application/json" -d "{\"task\": \"Add TODO\"}" http://localhost:5000/add
+curl -X POST -H "Content-Type: application/json" -d '{"content":"Buy milk"}' http://localhost:5000/todo
 
 #List All TODO item
-curl http://localhost:5000/list
+curl http://localhost:5000/todo
 
 #Mark a TODO item as completed
-curl -X PUT http://localhost:5000/complete/1
+curl -X PUT http://localhost:5000/todo/1/complete
 
 #Delete a TODO item
-curl -X DELETE http://localhost:5000/delete/1
+curl -X DELETE http://localhost:5000/todo/1
