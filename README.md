@@ -15,6 +15,8 @@
   for it.(test_app.py at main branch)
 
 - Run it with command (pytest test_app.py)
+  
+- Postman is required for test the curl function.
 
   
 2.Instruction for building the app
